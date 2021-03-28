@@ -5,34 +5,34 @@ using namespace std;
 double length[9]={0};
 double lengthex[9]={0};
 double radius[9]={0,8.392,28.432,-23.059,7.7769,-63.2347,-11.774,11.0338,39.986};
-double n[5]={0,1.7725,1.71736,1.62299,1.622347};//¿ÕÆøÕÛÉäÂÊÎª1
+double n[5]={0,1.7725,1.71736,1.62299,1.622347};//ç©ºæ°”æŠ˜å°„ç‡ä¸º1
 double d[9]={0,4.2,1.15,0.96,1.31,2.69,0.5,4.2,11.24};
 double i[9]={0};
 double iex[9]={0};
-double u[10]={0};//º¬u'8
+double u[10]={0};//å«u'8
 //double uex[9]={0};
-int h=10;//ÉèÍ¶Éä¸ß¶ÈÎª10mm
-double fex;//ÏµÍ³½¹¾à£¨ÒÔÖ÷µãÎªÔ­µã£©
-double princi[3]={};//ÏµÍ³Ö÷µã£¨»ùµã£©Î»ÖÃ£¨ÒÔ×î×ó²à¶¥µãÎªÔ­µã£©
-			//ÕâÀïprinciÎªÊ²Ã´³õÊ¼»¯ºóÖµÓĞÎÊÌâ£¿
-//¡ª¡ªÒÔÉÏÊ×Ôª¾ùÖÃÁã²»ÓÃ
+int h=10;//è®¾æŠ•å°„é«˜åº¦ä¸º10mm
+double fex;//ç³»ç»Ÿç„¦è·ï¼ˆä»¥ä¸»ç‚¹ä¸ºåŸç‚¹ï¼‰
+double princi[3]={};//ç³»ç»Ÿä¸»ç‚¹ï¼ˆåŸºç‚¹ï¼‰ä½ç½®ï¼ˆä»¥æœ€å·¦ä¾§é¡¶ç‚¹ä¸ºåŸç‚¹ï¼‰
+			//è¿™é‡Œprinciä¸ºä»€ä¹ˆåˆå§‹åŒ–åå€¼æœ‰é—®é¢˜ï¼Ÿ
+//â€”â€”ä»¥ä¸Šé¦–å…ƒå‡ç½®é›¶ä¸ç”¨
 
-void clac(int t);//µİ¹éÊ½ºËĞÄ¼ÆËã
-void print(int orientation);//×·¼£½á¹û±¨¸æ
-void kid(int distance,int height);//µÚÈıĞ¡Ìâ
-void trace(int orientation);//×·¼£Êı¾İÔËËã£¨³õÊ¼»¯+µİ¹éÔËËã£©
-void invert();//·´Ïò×·¼££¬´¦ÀíÊı×é
-//º¯ÊıÉùÃ÷
+void clac(int t);//é€’å½’å¼æ ¸å¿ƒè®¡ç®—
+void print(int orientation);//è¿½è¿¹ç»“æœæŠ¥å‘Š
+void kid(int distance,int height);//ç¬¬ä¸‰å°é¢˜
+void trace(int orientation);//è¿½è¿¹æ•°æ®è¿ç®—ï¼ˆåˆå§‹åŒ–+é€’å½’è¿ç®—ï¼‰
+void invert();//åå‘è¿½è¿¹ï¼Œå¤„ç†æ•°ç»„
+//å‡½æ•°å£°æ˜
 
 int main()
 {
 	cout<<setiosflags(ios::fixed)<<setiosflags(ios::right);
-	trace(1);//ÕıÏò1£¬¸ºÏò2
-	invert();//Êı¾İÊı×éµ¹ÖÃ
+	trace(1);//æ­£å‘1ï¼Œè´Ÿå‘2
+	invert();//æ•°æ®æ•°ç»„å€’ç½®
 	trace(2);
-	invert();//Êı¾İÊı×é¸´Î»
-	kid(9000,800);//9m,0.8mµÄº¢×Ó
-	kid(10000,800);//10m,0.8mµÄº¢×Ó
+	invert();//æ•°æ®æ•°ç»„å¤ä½
+	kid(9000,800);//9m,0.8mçš„å­©å­
+	kid(10000,800);//10m,0.8mçš„å­©å­
 }
 
 void invert()
@@ -60,14 +60,14 @@ void invert()
 void trace(int orientation)
 {
 	int a=1;
-	//l1=-¡Ş
-	i[1]=h/radius[1];//i1³õÊ¼»¯£¨ÌØÊâ£©
-	iex[1]=i[1]/n[1];//i1'³õÊ¼»¯
+	//l1=-âˆ
+	i[1]=h/radius[1];//i1åˆå§‹åŒ–ï¼ˆç‰¹æ®Šï¼‰
+	iex[1]=i[1]/n[1];//i1'åˆå§‹åŒ–
 	u[1]=0;
-	u[2]=u[1]+i[1]-iex[1];//u[t]=uex[t-1]£¬¹ÊÊ¡È¥uex[]
-	//lengthex[1]=n[1]/((n[1]-1)/radius[1]);//l1'³õÊ¼»¯£¨ÌØÊâ£©//¼ÆËãÊ½ÈİÒ×Ğ´´í
-	lengthex[1]=radius[1]*(1+iex[1]/u[2]);//l1'³õÊ¼»¯			//·¨¶ş
-	clac(2);//±í¸ñÊ£Óà±ØÌîÊı¾İµÄ¼ÆËã
+	u[2]=u[1]+i[1]-iex[1];//u[t]=uex[t-1]ï¼Œæ•…çœå»uex[]
+	//lengthex[1]=n[1]/((n[1]-1)/radius[1]);//l1'åˆå§‹åŒ–ï¼ˆç‰¹æ®Šï¼‰//è®¡ç®—å¼å®¹æ˜“å†™é”™
+	lengthex[1]=radius[1]*(1+iex[1]/u[2]);//l1'åˆå§‹åŒ–			//æ³•äºŒ
+	clac(2);//è¡¨æ ¼å‰©ä½™å¿…å¡«æ•°æ®çš„è®¡ç®—
 
 	fex=h/u[9];
 	while(a<8)
@@ -82,7 +82,7 @@ void trace(int orientation)
 
 void clac(int t)
 {
-	if(!(t%2))//Å¼Êı
+	if(!(t%2))//å¶æ•°
 	{
 		length[t]=lengthex[t-1]-d[t-1];
 		i[t]=(length[t]-radius[t])*u[t]/radius[t];
@@ -90,7 +90,7 @@ void clac(int t)
 		u[t+1]=u[t]+i[t]-iex[t];
 		lengthex[t]=radius[t]*(1+iex[t]/u[t+1]);
 	}
-	else//ÆæÊı
+	else//å¥‡æ•°
 	{
 		length[t]=lengthex[t-1]-d[t-1];
 		i[t]=(length[t]-radius[t])*u[t]/radius[t];
@@ -99,33 +99,33 @@ void clac(int t)
 		lengthex[t]=radius[t]*(1+iex[t]/u[t+1]);
 	}
 	if(t<9)
-		clac(++t);//µİ¹é
+		clac(++t);//é€’å½’
 }
 
 void kid(int distance,int height)
 {
-	double ltotal=-(distance+princi[1]);//×¢ÒâlÊÇ¸ºÖµ
+	double ltotal=-(distance+princi[1]-1.969436);//æ³¨æ„læ˜¯è´Ÿå€¼,è¿™é‡Œçš„å¸¸æ•°æ˜¯ç‰©æ–¹ä¸»é¢å’Œåƒæ–¹ä¸»é¢é—´çš„è·ç¦»
 	double lextotal=ltotal*fex/(ltotal+fex);
 	double betatotal=fex/(ltotal+fex);
 	double heightex=betatotal*height;
 
-	cout<<setiosflags(ios::right)<<setw(12)<<"¾àÎï¾µ"<<distance<<"mm´¦º¢×ÓÏñµÄÎ»ÖÃ£¨ÒÔÏñ·½Ö÷µãÎªÔ­µã£©";
+	cout<<setiosflags(ios::right)<<setw(12)<<"è·ç‰©é•œ"<<distance<<"mmå¤„å­©å­åƒçš„ä½ç½®ï¼ˆä»¥åƒæ–¹ä¸»ç‚¹ä¸ºåŸç‚¹ï¼‰";
 	cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<lextotal<<endl<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<"ÏµÍ³´¹Öá·Å´óÂÊÎª"<<betatotal<<endl<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<height<<"mm¸ßº¢×ÓÏñµÄ´óĞ¡";
+	cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<"ç³»ç»Ÿå‚è½´æ”¾å¤§ç‡ä¸º"<<betatotal<<endl<<endl;
+	cout<<setiosflags(ios::right)<<setw(12)<<height<<"mmé«˜å­©å­åƒçš„å¤§å°";
 	cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<heightex<<endl<<endl;
 }
 
 void print(int orientation)
 {
-	cout<<setiosflags(ios::right)<<setw(12)<<"ÏîÄ¿/ĞòºÅ";
+	cout<<setiosflags(ios::right)<<setw(12)<<"é¡¹ç›®/åºå·";
 	for(int m=1;m<9;++m)
 		cout<<setiosflags(ios::right)<<setw(12)<<m;
 	cout<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"Îï·½½Ø¾àl";
+	cout<<setiosflags(ios::right)<<setw(12)<<"ç‰©æ–¹æˆªè·l";
 	if (length[1]==0)
 	{
-		cout<<setiosflags(ios::right)<<setw(12)<<"-¡Ş";
+		cout<<setiosflags(ios::right)<<setw(12)<<"-âˆ";
 		for(int m=2;m<9;++m)
 			cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<length[m];
 	}
@@ -135,24 +135,24 @@ void print(int orientation)
 			cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<length[m];
 	}
 	cout<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"ÈëÉä½Çi";
+	cout<<setiosflags(ios::right)<<setw(12)<<"å…¥å°„è§’i";
 	for(int m=1;m<9;++m)
 		cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<i[m];
 	cout<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"ÕÛÉä½Çi\'";
+	cout<<setiosflags(ios::right)<<setw(12)<<"æŠ˜å°„è§’i\'";
 	for(int m=1;m<9;++m)
 		cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<iex[m];
 	cout<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"Ïñ·½¿×¾¶½Çu\'";
+	cout<<setiosflags(ios::right)<<setw(12)<<"åƒæ–¹å­”å¾„è§’u\'";
 	for(int m=2;m<10;++m)
 		cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<u[m];
 	cout<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"Ïñ·½½Ø¾àl\'";
+	cout<<setiosflags(ios::right)<<setw(12)<<"åƒæ–¹æˆªè·l\'";
 	for(int m=1;m<9;++m)
 		cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<lengthex[m];
 	cout<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"ÏµÍ³½¹¾àf\'";
+	cout<<setiosflags(ios::right)<<setw(12)<<"ç³»ç»Ÿç„¦è·f\'";
 	cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<fex<<endl;
-	cout<<setiosflags(ios::right)<<setw(12)<<"ÏµÍ³Ö÷µã£¨»ùµã£©Î»ÖÃ£¨ÒÔ×î×ó²à¶¥µãÎªÔ­µã£©";
+	cout<<setiosflags(ios::right)<<setw(12)<<"ç³»ç»Ÿä¸»ç‚¹ï¼ˆåŸºç‚¹ï¼‰ä½ç½®ï¼ˆä»¥æœ€å·¦ä¾§é¡¶ç‚¹ä¸ºåŸç‚¹ï¼‰";
 	cout<<setiosflags(ios::right)<<setw(12)<<setprecision(6)<<princi[orientation]<<endl<<endl;
 }
